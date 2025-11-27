@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anchor Links Cheat Sheet – Google Sites + GitHub Pages</title>
+<style>
+body {
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  margin:0;
+  padding:2rem;
+  line-height:1.6;
+}
+.page{
+  max-width:900px;
+  margin:0 auto;
+  background:#020617;
+  border-radius:18px;
+  padding:2rem 2.5rem;
+  border:1px solid #1f2937;
+  box-shadow:0 20px 45px rgba(0,0,0,0.55);
+  background-image:
+    radial-gradient(circle at top left,rgba(56,189,248,0.14),transparent 55%),
+    radial-gradient(circle at bottom right,rgba(52,211,153,0.12),transparent 55%);
+}
+h1{
+  color:#38bdf8;
+  text-align:center;
+  font-size:2rem;
+}
+h2{
+  border-left:4px solid #38bdf8;
+  padding-left:0.6rem;
+  margin-top:1.3rem;
+}
+h3{
+  margin-top:1rem;
+}
+pre{
+  background:#0b1220;
+  padding:1rem;
+  border-radius:12px;
+  overflow-x:auto;
+  border:1px solid #1f2937;
+}
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.code-label{
+  font-size:0.8rem;
+  color:#9ca3af;
+  margin-bottom:0.2rem;
+}
+.card{
+  border-radius:14px;
+  padding:1rem 1.2rem;
+  border:1px solid #1f2937;
+  background:radial-gradient(circle at top left,rgba(56,189,248,0.12),transparent 55%),
+             radial-gradient(circle at bottom right,rgba(250,204,21,0.10),transparent 55%),
+             #020617;
+  margin:1rem 0;
+}
+.bad{
+  color:#f97373;
+}
+.good{
+  color:#4ade80;
+}
+ul { margin-left:1.2rem; }
+</style>
+</head>
+<body>
+<div class="page">
+<h1>Anchor Links Cheat Sheet</h1>
+<p style="text-align:center;color:#9ca3af;">Google Sites + GitHub Pages • How to jump to sections with <code>#id</code></p>
+
+<h2>1️⃣ What is an Anchor Link?</h2>
+<p>An anchor link is a normal URL with a <strong># + id</strong> added at the end. It jumps the viewer straight to a specific section on the page.</p>
+
+<div class="card">
+<strong>Pattern:</strong><br>
+<code>https://website.com/page-slug#idValue</code><br>
+Where <code>idValue</code> comes from <code>id="idValue"</code> in the HTML or in the page’s auto-generated IDs.
+</div>
+
+<h2>2️⃣ How to Find the ID in Inspect</h2>
+<ol>
+<li>Open the page in your browser.</li>
+<li>Right–click the heading or section you want to jump to &gt; <strong>Inspect</strong>.</li>
+<li>In the HTML panel, look for something like:
+  <pre><code>&lt;h2 id="menu"&gt;Our Menu&lt;/h2&gt;
+&lt;div id="Bookkeepingsupport"&gt;...&lt;/div&gt;</code></pre>
+</li>
+<li><strong>Double click the id value</strong> (the part inside the quotes) and copy it:
+  <ul>
+    <li><code>id="menu"</code> → copy <code>menu</code></li>
+    <li><code>id="Bookkeepingsupport"</code> → copy <code>Bookkeepingsupport</code></li>
+    <li>Google Sites style: <code>id="h.14e94498b2b50573_354"</code> → copy <code>h.14e94498b2b50573_354</code></li>
+  </ul>
+</li>
+</ol>
+
+<div class="card">
+<strong>Remember:</strong><br>
+<span class="good">✔ Use only what is inside the quotes</span><br>
+<span class="bad">✖ Do NOT include quotes or parentheses</span>
+</div>
+
+<h2>3️⃣ Building the Anchor URL (Normal Websites)</h2>
+<p>Take the full page URL, then add <code>#</code> and the id.</p>
+
+<h3>Example: “Before &amp; After Photos” page</h3>
+<div class="code-label">Base page URL:</div>
+<pre><code>https://nathanshomerepairsolution.com/before-after-photos</code></pre>
+
+<div class="code-label">Found id in Inspect:</div>
+<pre><code>id="h.14e94498b2b50573_354"</code></pre>
+
+<div class="code-label">Final anchor link:</div>
+<pre><code>https://nathanshomerepairsolution.com/before-after-photos#h.14e94498b2b50573_354</code></pre>
+
+<h3>Example: Rise menu link</h3>
+<div class="code-label">Anchor URL:</div>
+<pre><code>https://risegrabandgo.com/south-beach#1b3437a0-c81f-4000-befb-792d9724dc3d</code></pre>
+
+<div class="card">
+<b>Format reminder:</b><br>
+<span class="good">✔ <code>https://(website)/page#idValue</code></span><br>
+<span class="bad">✖ <code>https://(website)/# "id"</code> (no quotes, no extra slash)</span>
+</div>
+
+<h2>4️⃣ Adding Your Own IDs in Code</h2>
+<p>You can create your own anchor targets by adding an <code>id</code> to a heading or wrapper element.</p>
+
+<div class="code-label">HTML example from services page:</div>
+<pre><code>&lt;header class="service-head"&gt;
+  &lt;div id="Bookkeepingsupport"&gt;
+    &lt;h3&gt;Monthly Bookkeeping Support&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+<p>Now the anchor part is:</p>
+<pre><code>#Bookkeepingsupport</code></pre>
+
+<h2>5️⃣ Google Sites + GitHub: Anchor Linking Flow</h2>
+<p>For your system, you’re often embedding a GitHub Pages URL into Google Sites and still want anchor behavior.</p>
+
+<ol>
+<li>Publish your section page on GitHub Pages (for example a services page).</li>
+<li>Find / add the id in your HTML:
+  <pre><code>id="Bookkeepingsupport"</code></pre>
+</li>
+<li>Take the full GitHub Pages URL for that page (your embed link), for example:
+  <pre><code>https://yourusername.github.io/your-repo/services.html</code></pre>
+</li>
+<li>Add <code>#</code> + id:
+  <pre><code>https://yourusername.github.io/your-repo/services.html#Bookkeepingsupport</code></pre>
+</li>
+<li>Use that full URL in Google Sites:
+  <ul>
+    <li>Insert → Embed → By URL → paste <code>https://(githubpagelink)#Bookkeepingsupport</code></li>
+  </ul>
+</li>
+</ol>
+
+<div class="card">
+<strong>Key rule for your notes:</strong><br>
+<code>Living URL = GitHub page link + # + id</code><br>
+Example: <code>https://(githubpagelink)#Bookkeepingsupport</code>
+</div>
+
+<h2>6️⃣ Quick “Right vs Wrong” Reference</h2>
+<ul>
+<li><span class="good">✔ Right:</span> <code>https://site.com/page#h.14e94498b2b50573_354</code></li>
+<li><span class="bad">✖ Wrong:</span> <code>https://site.com/page#"h.14e94498b2b50573_354"</code></li>
+<li><span class="bad">✖ Wrong:</span> <code>https://site.com/page/#(h.14e94498b2b50573_354)</code></li>
+<li><span class="good">✔ Right:</span> <code>https://mcknighttoddbookkeeping.com/services#Bookkeepingsupport</code></li>
+</ul>
+
+<h2>7️⃣ Checklist for Creating an Anchor Link</h2>
+<ul>
+<li>✔ Inspect the section and <strong>find the id</strong></li>
+<li>✔ Copy only the <strong>id value</strong> (no quotes)</li>
+<li>✔ Start with the full page URL (including page name / slug)</li>
+<li>✔ Append <code>#</code> + id value</li>
+<li>✔ Use this final URL in Google Sites embeds or regular links</li>
+</ul>
+
+<p style="text-align:center;color:#9ca3af;margin-top:1.5rem;">
+Perfect for your cheat-sheet hub – quick reminders for future you when building anchors in Google Sites + GitHub. 💙
+</p>
+
+</div>
+</body>
+</html>
