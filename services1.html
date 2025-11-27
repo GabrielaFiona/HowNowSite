@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Pages Multi-Page Website Cheat Sheet</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1220;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #020617;
+      border-radius: 18px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+      border: 1px solid #1f2937;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    h1 {
+      font-size: 1.9rem;
+      color: #38bdf8;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid #38bdf8;
+      padding-left: 0.6rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+    }
+    p {
+      margin: 0.25rem 0 0.5rem;
+    }
+    code {
+      font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #020617;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre {
+      background: #020617;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre code {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.5rem 0 0.8rem;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.75);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pill span {
+      font-size: 0.85rem;
+    }
+    .pill--folder { border-color: #34d399; background: rgba(6,78,59,0.25); }
+    .pill--html { border-color: #fb7185; background: rgba(88,28,135,0.25); }
+    .pill--css { border-color: #38bdf8; background: rgba(8,47,73,0.25); }
+    .pill--js { border-color: #facc15; background: rgba(113,63,18,0.3); }
+    .pill-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+    }
+    .dot-folder { background: #34d399; }
+    .dot-html { background: #fb7185; }
+    .dot-css { background: #38bdf8; }
+    .dot-js { background: #facc15; }
+    .card {
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      margin: 0.8rem 0;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.14), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(250,204,21,0.12), transparent 55%),
+                  #020617;
+    }
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+    .card-strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+    .tip {
+      border-left: 4px solid #34d399;
+      background: rgba(6,95,70,0.15);
+    }
+    .warning {
+      border-left: 4px solid #fb7185;
+      background: rgba(127,29,29,0.2);
+    }
+    .steps {
+      counter-reset: step;
+      margin-left: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .steps li {
+      counter-increment: step;
+      margin: 0.4rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, #38bdf8, #4ade80);
+      color: #020617;
+      font-weight: 700;
+    }
+    .inline-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #111827;
+      margin: 1.5rem 0;
+    }
+    .kbd {
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.8rem;
+      background: #020617;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.6);
+    }
+    .mt-tight { margin-top: 0.25rem; }
+    .mb-none { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>GitHub Pages Cheat Sheet<br>Multi‑Page Site with HTML + CSS + JS</h1>
+
+    <p style="text-align:center; margin-top:0.4rem; color:#9ca3af; font-size:0.9rem;">
+      One repo • Multiple pages • Each page can have its own CSS + JS • Perfect for Google Sites embeds
+    </p>
+
+    <hr>
+
+    <h2>1. The Big Idea</h2>
+    <div class="card tip">
+      <div class="card-title">Core Concept</div>
+      <p class="card-strong mb-none">
+        🔗 Each <code>.html</code> file becomes a page URL.<br>
+        🎨 Each page can load its own <code>.css</code> and <code>.js</code> files using paths.
+      </p>
+      <p class="mt-tight">
+        GitHub Pages is just a normal web host: your <code>.html</code> is the page, and it <em>pulls in</em> CSS + JS.
+        Google Sites only needs the HTML page URL.
+      </p>
+    </div>
+
+    <h2>2. Recommended Folder Structure</h2>
+
+    <div class="pill-row">
+      <div class="pill pill--folder"><span class="pill-dot dot-folder"></span><span>folder</span></div>
+      <div class="pill pill--html"><span class="pill-dot dot-html"></span><span>HTML page</span></div>
+      <div class="pill pill--css"><span class="pill-dot dot-css"></span><span>CSS file</span></div>
+      <div class="pill pill--js"><span class="pill-dot dot-js"></span><span>JS file</span></div>
+    </div>
+
+    <pre><code>your-repo/                       <span class="inline-label">GitHub repository</span>
+├── <span style="color:#fb7185;">index.html</span>                  &lt;– Home page
+├── <span style="color:#fb7185;">about.html</span>                  &lt;– About page
+├── <span style="color:#fb7185;">services.html</span>               &lt;– Services page
+│
+├── <span style="color:#34d399;">css/</span>
+│   ├── <span style="color:#38bdf8;">index.css</span>               &lt;– Styles for index.html
+│   ├── <span style="color:#38bdf8;">about.css</span>               &lt;– Styles for about.html
+│   └── <span style="color:#38bdf8;">services.css</span>            &lt;– Styles for services.html
+│
+└── <span style="color:#34d399;">js/</span>
+    ├── <span style="color:#facc15;">index.js</span>                &lt;– Scripts for index.html
+    ├── <span style="color:#facc15;">about.js</span>                &lt;– Scripts for about.html
+    └── <span style="color:#facc15;">services.js</span>             &lt;– Scripts for services.html</code></pre>
+
+    <div class="card">
+      <div class="card-title">Naming tip</div>
+      <p class="mb-none">
+        Name things by the page they belong to: <code>about.html</code>, <code>about.css</code>, <code>about.js</code>.<br>
+        This keeps everything obvious when you come back later.
+      </p>
+    </div>
+
+    <h2>3. How Paths Work (The Key That Makes It All Click)</h2>
+
+    <div class="card warning">
+      <div class="card-title">Golden Rule</div>
+      <p class="card-strong mb-none">
+        The path in your HTML must match exactly where the file lives in your repo.
+      </p>
+      <p class="mt-tight">
+        No magic. GitHub does not “guess” – you point directly to the file.
+      </p>
+    </div>
+
+    <h3>Case A – Files in the same folder as the HTML</h3>
+    <pre><code>your-repo/
+├── index.html
+├── style.css
+└── script.js</code></pre>
+
+    <p><span class="inline-label">Links inside index.html</span></p>
+    <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="<span style="color:#38bdf8;">style.css</span>"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  ...
+  &lt;script src="<span style="color:#facc15;">script.js</span>"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+    <h3>Case B – Files inside <code>css/</code> and <code>js/</code> folders</h3>
+    <pre><code>your-repo/
+├── index.html
+├── css/
+│   └── index.css
+└── js/
+    └── index.js</code></pre>
+
+    <p><span class="inline-label">Links inside index.html</span></p>
+    <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="<span style="color:#38bdf8;">css/index.css</span>"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  ...
+  &lt;script src="<span style="color:#facc15;">js/index.js</span>"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+    <div class="card tip">
+      <div class="card-title">Read paths like folders on your computer</div>
+      <p class="mb-none">
+        <code>css/index.css</code> means “open the <code>css</code> folder, then the <code>index.css</code> file.”<br>
+        Same logic for <code>js/about.js</code>, <code>images/logo.png</code>, etc.
+      </p>
+    </div>
+
+    <h2>4. Example: Three Pages, Each With Their Own CSS + JS</h2>
+
+    <h3>A. index.html</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Home&lt;/title&gt;
+  &lt;link rel="stylesheet" href="<span style="color:#38bdf8;">css/index.css</span>"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Home Page&lt;/h1&gt;
+  &lt;script src="<span style="color:#facc15;">js/index.js</span>"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>B. about.html</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;About&lt;/title&gt;
+  &lt;link rel="stylesheet" href="<span style="color:#38bdf8;">css/about.css</span>"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;About Page&lt;/h1&gt;
+  &lt;script src="<span style="color:#facc15;">js/about.js</span>"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>C. services.html</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Services&lt;/title&gt;
+  &lt;link rel="stylesheet" href="<span style="color:#38bdf8;">css/services.css</span>"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Services Page&lt;/h1&gt;
+  &lt;script src="<span style="color:#facc15;">js/services.js</span>"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <hr>
+
+    <h2>5. Turning the Repo into a Website (GitHub Pages)</h2>
+
+    <ol class="steps">
+      <li>
+        Create a new repo on GitHub (public is easiest).  
+        Add your HTML, CSS, and JS files in the structure above.
+      </li>
+      <li>
+        In the repo, go to <span class="kbd">Settings</span> → scroll to <span class="kbd">Pages</span>.
+      </li>
+      <li>
+        Under <span class="kbd">Build and deployment</span>:
+        <br>• Source: <code>Deploy from branch</code>
+        <br>• Branch: <code>main</code>, Folder: <code>/(root)</code>
+      </li>
+      <li>
+        GitHub will give you a site URL like:<br>
+        <code>https://your-username.github.io/your-repo/</code>
+      </li>
+    </ol>
+
+    <div class="card tip">
+      <div class="card-title">Page URLs you can embed in Google Sites</div>
+      <p class="mb-none">
+        • Home: <code>https://your-username.github.io/your-repo/index.html</code><br>
+        • About: <code>https://your-username.github.io/your-repo/about.html</code><br>
+        • Services: <code>https://your-username.github.io/your-repo/services.html</code>
+      </p>
+    </div>
+
+    <h2>6. Embedding in Google Sites</h2>
+
+    <ol class="steps">
+      <li>Copy the full URL of the HTML page you want (for example, <code>.../about.html</code>).</li>
+      <li>In Google Sites, click <span class="kbd">Embed</span> → choose <span class="kbd">By URL</span>.</li>
+      <li>Paste the page URL, insert, and resize the frame as needed.</li>
+    </ol>
+
+    <hr>
+
+    <h2>7. Mini Checklist for Each New Page 🧾</h2>
+
+    <ul>
+      <li>Create <code>mypage.html</code> in the repo root.</li>
+      <li>Create matching <code>css/mypage.css</code> and <code>js/mypage.js</code> (if needed).</li>
+      <li>In <code>mypage.html</code>:
+        <ul>
+          <li>Add <code>&lt;link rel="stylesheet" href="css/mypage.css"&gt;</code> in <code>&lt;head&gt;</code>.</li>
+          <li>Add <code>&lt;script src="js/mypage.js"&gt;&lt;/script&gt;</code> before <code>&lt;/body&gt;</code>.</li>
+        </ul>
+      </li>
+      <li>Commit + push changes to GitHub.</li>
+      <li>Visit <code>https://your-username.github.io/your-repo/mypage.html</code> to test.</li>
+      <li>Embed that URL in Google Sites.</li>
+    </ul>
+
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:#9ca3af; text-align:center;">
+      You’ve got this. One repo, many pages, each with its own CSS + JS — all feeding beautifully into your Google Site. 💫
+    </p>
+  </div>
+</body>
+</html>
