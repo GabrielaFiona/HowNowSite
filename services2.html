@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Centered Footer Cheat Sheet</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #020617;
+      border-radius: 18px;
+      padding: 2rem 2.5rem 2.5rem;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+      border: 1px solid #1f2937;
+      background-image:
+        radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(52,211,153,0.12), transparent 55%);
+      background-blend-mode: screen;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    h1 {
+      font-size: 1.9rem;
+      color: #38bdf8;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid #38bdf8;
+      padding-left: 0.6rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+    }
+    p {
+      margin: 0.25rem 0 0.5rem;
+    }
+    code {
+      font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #020617;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre {
+      background: #020617;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre code {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.5rem 0 0.8rem;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.85);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pill span {
+      font-size: 0.85rem;
+    }
+    .pill-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+    }
+    .dot-html { background: #fb7185; }
+    .dot-css { background: #38bdf8; }
+    .dot-js { background: #facc15; }
+    .dot-layout { background: #34d399; }
+    .card {
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      margin: 0.8rem 0;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(250,204,21,0.10), transparent 55%),
+                  #020617;
+    }
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+    .card-strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+    .tip {
+      border-left: 4px solid #34d399;
+      background: rgba(6,95,70,0.18);
+    }
+    .warning {
+      border-left: 4px solid #fb7185;
+      background: rgba(127,29,29,0.24);
+    }
+    .info {
+      border-left: 4px solid #38bdf8;
+      background: rgba(15,23,42,0.9);
+    }
+    .steps {
+      counter-reset: step;
+      margin-left: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .steps li {
+      counter-increment: step;
+      margin: 0.4rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, #38bdf8, #4ade80);
+      color: #020617;
+      font-weight: 700;
+    }
+    .inline-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #111827;
+      margin: 1.5rem 0;
+    }
+    .kbd {
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.8rem;
+      background: #020617;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.6);
+    }
+    .mt-tight { margin-top: 0.25rem; }
+    .mb-none { margin-bottom: 0; }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .table th,
+    .table td {
+      border: 1px solid #111827;
+      padding: 0.4rem 0.6rem;
+    }
+    .table th {
+      background: rgba(15,23,42,0.9);
+      text-align: left;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+    .table tr:nth-child(even) td {
+      background: rgba(15,23,42,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Responsive Centered Footer Cheat Sheet</h1>
+    <p style="text-align:center; margin-top:0.4rem; color:#9ca3af; font-size:0.9rem;">
+      For GitHub Pages + Google Sites embeds • Single-column + multi-column responsive footer layouts
+    </p>
+
+    <div class="pill-row">
+      <div class="pill"><span class="pill-dot dot-html"></span><span>HTML structure</span></div>
+      <div class="pill"><span class="pill-dot dot-css"></span><span>Flex &amp; Grid layout</span></div>
+      <div class="pill"><span class="pill-dot dot-js"></span><span>Optional year script</span></div>
+      <div class="pill"><span class="pill-dot dot-layout"></span><span>Mobile → Desktop responsive</span></div>
+    </div>
+
+    <hr>
+
+    <h2>1. Big Picture: How Your Footer Should Behave</h2>
+    <div class="card tip">
+      <div class="card-title">Goal</div>
+      <p class="card-strong mb-none">
+        ✅ Centered horizontally • ✅ Clean and consistent • ✅ Stacks nicely on mobile • ✅ Works when embedded
+      </p>
+      <p class="mt-tight">
+        Everything below is safe for your system: a standalone HTML page hosted on GitHub Pages and embedded into Google Sites.
+        You can reuse these patterns on any future site.
+      </p>
+    </div>
+
+    <h2>2. Universal Single-Column Centered Footer (Base Pattern)</h2>
+    <p>This is your “default” footer. It’s always centered and responsive with no layout drama.</p>
+
+    <h3>2.1 HTML</h3>
+    <pre><code>&lt;footer class="footer"&gt;
+  &lt;div class="footer-inner"&gt;
+    &lt;div class="footer-links"&gt;
+      &lt;a href="https://facebook.com" target="_blank"&gt;Facebook&lt;/a&gt; •
+      &lt;a href="https://yelp.com" target="_blank"&gt;Yelp&lt;/a&gt; •
+      &lt;a href="tel:15555555555"&gt;(555) 555-5555&lt;/a&gt; •
+      &lt;a href="mailto:hello@example.com"&gt;hello@example.com&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class="rule"&gt;&lt;/div&gt;
+
+    &lt;div class="footer-copy small"&gt;
+      &amp;copy; &lt;span id="year"&gt;2024&lt;/span&gt; Your Business Name. All rights reserved.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+    <h3>2.2 CSS</h3>
+    <pre><code>/* Base centered footer */
+.footer {
+  background: #020617;              /* or your brand color */
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  padding: 40px 16px;
+}
+
+.footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  margin: 6px 0 8px;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.footer-copy {
+  margin-top: 4px;
+}</code></pre>
+
+    <h3>2.3 JS (Optional auto-updating year)</h3>
+    <pre><code>&lt;script&gt;
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+&lt;/script&gt;</code></pre>
+
+    <div class="card info">
+      <div class="card-title">Safe for Your Setup</div>
+      <p class="mb-none">
+        This footer works perfectly as a standalone GitHub Pages page. When embedded into Google Sites, it stays centered and responsive
+        inside the iframe.
+      </p>
+    </div>
+
+    <hr>
+
+    <h2>3. Fixing Existing Footers That Use <code>.wrap</code></h2>
+    <p>If a page already has HTML like this:</p>
+
+    <pre><code>&lt;footer class="footer"&gt;
+  &lt;div class="wrap"&gt;
+    ...footer content...
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+    <p>And your CSS previously used a grid on <code>.footer .wrap</code>, you’ll center it using flex instead.</p>
+
+    <h3>3.1 New Flex-Based Centering</h3>
+    <pre><code>.footer .wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}</code></pre>
+
+    <div class="card warning">
+      <div class="card-title">Important: Things to Remove or Override</div>
+      <p class="card-strong mb-none">
+        Search your CSS for old layout rules that fight with the new flex layout and remove or comment them out:
+      </p>
+      <ul class="mt-tight">
+        <li>Any <code>.footer .wrap { display: grid; ... }</code></li>
+        <li>Media queries like:
+          <pre><code>@media (min-width: 840px) {
+  .footer .wrap {
+    grid-template-columns: 1fr 1fr;
+    ...
+  }
+}</code></pre>
+        </li>
+        <li>Any extra <code>justify-content</code> or <code>text-align</code> rules on <code>.footer</code> or <code>.wrap</code> that clash:
+          <ul>
+            <li><code>text-align: left;</code> on <code>.footer</code></li>
+            <li><code>margin-left/right</code> hacks that push the footer off-center</li>
+          </ul>
+        </li>
+      </ul>
+      <p class="mt-tight mb-none">
+        Keep only one layout system per element: either grid or flex, not both.
+      </p>
+    </div>
+
+    <hr>
+
+    <h2>4. Responsive Two-Column Footer – Patterns</h2>
+    <p>
+      All of these patterns are:
+      <strong>single column on mobile</strong> and <strong>two columns on wider screens</strong>.
+      The whole footer remains centered in the page.
+    </p>
+
+    <table class="table">
+      <tr>
+        <th>Pattern</th>
+        <th>Use When</th>
+      </tr>
+      <tr>
+        <td><strong>4A. Branding + Contact</strong></td>
+        <td>Left: logo/brand • Right: contact info</td>
+      </tr>
+      <tr>
+        <td><strong>4B. Links + Contact</strong></td>
+        <td>Left: navigation/quick links • Right: email/phone</td>
+      </tr>
+      <tr>
+        <td><strong>4C. Contact + Social</strong></td>
+        <td>Left: email/phone • Right: social icons/links</td>
+      </tr>
+      <tr>
+        <td><strong>4D. Mixed custom layout</strong></td>
+        <td>Anything you want – same structure, different content</td>
+      </tr>
+    </table>
+
+    <h3>Shared HTML Structure for All Two-Column Patterns</h3>
+    <pre><code>&lt;footer class="footer"&gt;
+  &lt;div class="footer-inner footer-two-col"&gt;
+    &lt;div class="footer-col footer-col-left"&gt;
+      &lt;!-- Left column content (branding, links, etc.) --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="footer-col footer-col-right"&gt;
+      &lt;!-- Right column content (contact, social, etc.) --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-copy small"&gt;
+    &amp;copy; &lt;span id="year"&gt;2024&lt;/span&gt; Your Business.
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+    <h3>4.1 CSS Layout – Flex-based, Responsive</h3>
+    <pre><code>/* Shared footer styles (can reuse from single-column version) */
+.footer {
+  background: #020617;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  padding: 40px 16px 24px;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Two-column responsive layout */
+.footer-two-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;         /* centered on mobile */
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Desktop behavior */
+@media (min-width: 768px) {
+  .footer-two-col {
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;         /* but still centered as a block */
+  }
+
+  .footer-col {
+    flex: 1 1 0;
+    max-width: 360px;
+  }
+
+  .footer-col-left {
+    align-items: flex-start;
+  }
+
+  .footer-col-right {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.footer a {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}</code></pre>
+
+    <div class="card info">
+      <div class="card-title">Why this works well in embeds</div>
+      <p class="mb-none">
+        The footer content is wrapped in a centered container with a max-width. Inside that, flex handles stacking vs side-by-side.
+        The iframe in Google Sites just constrains the outer width — the layout still behaves normally.
+      </p>
+    </div>
+
+    <h3>4A. Branding + Contact Example</h3>
+    <pre><code>&lt;footer class="footer"&gt;
+  &lt;div class="footer-inner footer-two-col"&gt;
+    &lt;div class="footer-col footer-col-left"&gt;
+      &lt;div class="small"&gt;Your Business Name&lt;/div&gt;
+      &lt;div&gt;Bookkeeping &amp; Small Business Support&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="footer-col footer-col-right"&gt;
+      &lt;div&gt;&lt;a href="mailto:hello@example.com"&gt;hello@example.com&lt;/a&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;a href="tel:15555555555"&gt;(555) 555-5555&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-copy small"&gt;
+    &amp;copy; &lt;span id="year"&gt;2024&lt;/span&gt; Your Business Name.
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+    <h3>4B. Links + Contact Example</h3>
+    <pre><code>&lt;div class="footer-inner footer-two-col"&gt;
+  &lt;div class="footer-col footer-col-left"&gt;
+    &lt;div class="small"&gt;Quick Links&lt;/div&gt;
+    &lt;a href="#services"&gt;Services&lt;/a&gt;
+    &lt;a href="#pricing"&gt;Pricing&lt;/a&gt;
+    &lt;a href="#faq"&gt;FAQ&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-col footer-col-right"&gt;
+    &lt;div class="small"&gt;Contact&lt;/div&gt;
+    &lt;a href="mailto:hello@example.com"&gt;hello@example.com&lt;/a&gt;
+    &lt;a href="tel:15555555555"&gt;(555) 555-5555&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <h3>4C. Contact + Social Example</h3>
+    <pre><code>&lt;div class="footer-inner footer-two-col"&gt;
+  &lt;div class="footer-col footer-col-left"&gt;
+    &lt;div class="small"&gt;Get in touch&lt;/div&gt;
+    &lt;a href="mailto:hello@example.com"&gt;hello@example.com&lt;/a&gt;
+    &lt;a href="tel:15555555555"&gt;(555) 555-5555&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-col footer-col-right"&gt;
+    &lt;div class="small"&gt;Follow&lt;/div&gt;
+    &lt;a href="https://facebook.com" target="_blank"&gt;Facebook&lt;/a&gt;
+    &lt;a href="https://yelp.com" target="_blank"&gt;Yelp&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <hr>
+
+    <h2>5. Things To Check / Clean Up When Reusing These Patterns</h2>
+
+    <ol class="steps">
+      <li>
+        In your CSS, search for any <code>.footer</code>, <code>.footer-inner</code>, <code>.wrap</code>, or <code>footer</code> rules.
+        Remove duplicates that re-define layout (<code>display</code>, <code>grid-template-columns</code>, etc.).
+      </li>
+      <li>
+        Keep only one "layout block" per element:
+        <ul>
+          <li>Either <code>.footer-inner { display:flex; ... }</code> or <code>display:grid;</code>, not both.</li>
+          <li>Remove older grid settings that were used just to make two columns.</li>
+        </ul>
+      </li>
+      <li>
+        Make sure you only have one <code>&lt;span id="year"&gt;</code> per page and one matching JS snippet.
+      </li>
+      <li>
+        If a page previously used a different footer HTML structure, update the HTML to match one of the patterns here,
+        then remove any now-unused footer styles from your CSS.
+      </li>
+      <li>
+        Test each page in:
+        <ul>
+          <li>Your browser at the GitHub Pages URL.</li>
+          <li>Inside Google Sites after embedding the URL (resize to see mobile vs desktop behavior).</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="card tip">
+      <div class="card-title">Reusing on Future Sites</div>
+      <p class="mb-none">
+        Treat this footer like a reusable component: copy the HTML + CSS block into new projects, then swap in your own text,
+        links, and colors. The responsive behavior and centering will just work.
+      </p>
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:#9ca3af; text-align:center;">
+      One footer system to rule them all — centered, responsive, and ready for your future GitHub + Google Sites builds. 💫
+    </p>
+  </div>
+</body>
+</html>
