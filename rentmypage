@@ -1,0 +1,104 @@
+<h1>RENTMY Embed – GitHub Page (No Double Scroll)</h1>
+
+<p>
+  How to embed a GitHub-hosted page (or project) into a RENTMY page so it fits nicely
+  and only scrolls with the normal page scroll (no inner iframe scroll needed).
+</p>
+
+<hr />
+
+<h2>Step 1 – Add the iframe in RENTMY HTML</h2>
+
+<p>
+  In the RENTMY page editor, switch to the HTML view and paste this snippet.
+  Replace <code>YOUR_GITHUB_URL_HERE</code> with the URL of the GitHub page you want to embed.
+</p>
+
+<pre><code>&lt;iframe 
+  src="YOUR_GITHUB_URL_HERE" 
+  width="100%" 
+  height="2000px" 
+  title="GitHub Project" 
+  style="border: none; overflow: hidden;"
+  scrolling="no"&gt;
+&lt;/iframe&gt;
+</code></pre>
+
+<ul>
+  <li><code>width="100%"</code> makes the embed fill the width of the content area.</li>
+  <li><code>height="2000px"</code> gives the iframe enough vertical space to show the full page.</li>
+  <li><code>style="border: none; overflow: hidden;"</code> keeps it clean and hides any internal scrollbars.</li>
+  <li><code>scrolling="no"</code> tells the browser not to show a scrollbar inside the iframe.</li>
+</ul>
+
+<p>
+  If your GitHub page is longer, you can increase the height value later (for example, <code>2200px</code>, <code>2500px</code>, etc.).
+</p>
+
+<hr />
+
+<h2>Step 2 – How RENTMY Reformats the HTML</h2>
+
+<p>
+  After saving, RENTMY automatically wraps and reformats the iframe into this structure:
+</p>
+
+<pre><code>&lt;figure&gt;
+  &lt;div class="embed-content"&gt;
+    &lt;iframe 
+      src="https://gabrielafiona.github.io/bougiebeachpartyco/contact" 
+      width="100%" 
+      height="1700px" 
+      title="GitHub Project" 
+      style="border: none; overflow: hidden;" 
+      scrolling="no"&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+</code></pre>
+
+<p>
+  RENTMY:
+</p>
+
+<ul>
+  <li>Wraps the iframe in a <code>&lt;figure&gt;</code> element.</li>
+  <li>Adds a wrapper <code>&lt;div class="embed-content"&gt;</code> around your iframe.</li>
+  <li>Keeps your key attributes: <code>width</code>, <code>height</code>, <code>style</code>, and <code>scrolling</code>.</li>
+</ul>
+
+<hr />
+
+<h2>Step 3 – Result</h2>
+
+<ul>
+  <li>The GitHub page displays cleanly inside RENTMY.</li>
+  <li>The iframe is tall enough that it doesn’t need its own scrollbar.</li>
+  <li>Only the main RENTMY page scrolls, which fixes the “double scrolling” problem.</li>
+</ul>
+
+<p>
+  ✅ No extra CSS required.  
+  ✅ No JavaScript required.  
+  ✅ Just set a height that’s tall enough for your GitHub page.
+</p>
+
+<hr />
+
+<h2>Quick Copy–Paste Template</h2>
+
+<p>Use this as a starting point for future embeds:</p>
+
+<pre><code>&lt;iframe 
+  src="YOUR_GITHUB_URL_HERE" 
+  width="100%" 
+  height="2000px" 
+  title="GitHub Project" 
+  style="border: none; overflow: hidden;"
+  scrolling="no"&gt;
+&lt;/iframe&gt;
+</code></pre>
+
+<p>
+  Adjust the <code>height</code> value whenever you need more or less space.
+</p>
