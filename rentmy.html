@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RENTMY + GitHub Embed Cheat Sheet</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1220;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #020617;
+      border-radius: 18px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+      border: 1px solid #1f2937;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    h1 {
+      font-size: 1.9rem;
+      color: #38bdf8;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid #38bdf8;
+      padding-left: 0.6rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+    }
+    p {
+      margin: 0.25rem 0 0.5rem;
+    }
+    code {
+      font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #020617;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre {
+      background: #020617;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border: 1px solid #1f2937;
+    }
+    pre code {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.5rem 0 0.8rem;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.75);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pill span {
+      font-size: 0.85rem;
+    }
+    .pill--rentmy { border-color: #38bdf8; background: rgba(8,47,73,0.45); }
+    .pill--github { border-color: #34d399; background: rgba(6,78,59,0.35); }
+    .pill--iframe { border-color: #facc15; background: rgba(113,63,18,0.4); }
+    .pill-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+    }
+    .dot-rentmy { background: #38bdf8; }
+    .dot-github { background: #34d399; }
+    .dot-iframe { background: #facc15; }
+    .card {
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      margin: 0.8rem 0;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.14), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(250,204,21,0.12), transparent 55%),
+                  #020617;
+    }
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+    .card-strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+    .tip {
+      border-left: 4px solid #34d399;
+      background: rgba(6,95,70,0.15);
+    }
+    .warning {
+      border-left: 4px solid #fb7185;
+      background: rgba(127,29,29,0.2);
+    }
+    .steps {
+      counter-reset: step;
+      margin-left: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .steps li {
+      counter-increment: step;
+      margin: 0.4rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, #38bdf8, #4ade80);
+      color: #020617;
+      font-weight: 700;
+    }
+    .inline-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #111827;
+      margin: 1.5rem 0;
+    }
+    .kbd {
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.8rem;
+      background: #020617;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.6);
+    }
+    .mt-tight { margin-top: 0.25rem; }
+    .mb-none { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>RENTMY + GitHub Embed<br>No Double Scroll Cheat Sheet</h1>
+
+    <p style="text-align:center; margin-top:0.4rem; color:#9ca3af; font-size:0.9rem;">
+      Host the pretty page on GitHub • Embed in RENTMY • Make it scroll like one normal page ✨
+    </p>
+
+    <div class="pill-row" style="justify-content:center;">
+      <div class="pill pill--rentmy">
+        <span class="pill-dot dot-rentmy"></span><span>RENTMY page HTML</span>
+      </div>
+      <div class="pill pill--github">
+        <span class="pill-dot dot-github"></span><span>GitHub Pages URL</span>
+      </div>
+      <div class="pill pill--iframe">
+        <span class="pill-dot dot-iframe"></span><span>iframe embed</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>1. The Goal</h2>
+
+    <div class="card tip">
+      <div class="card-title">Core concept</div>
+      <p class="card-strong mb-none">
+        You design the contact/landing page on GitHub Pages ➜ then embed that page into RENTMY  
+        using a simple <code>&lt;iframe&gt;</code> with a fixed height, so:
+      </p>
+      <p class="mt-tight mb-none">
+        • ✅ The content fits inside the frame<br>
+        • ✅ Only the normal RENTMY page scrolls<br>
+        • ✅ No awkward “scroll inside a scroll” box
+      </p>
+    </div>
+
+    <h2>2. HTML You Paste into RENTMY</h2>
+
+    <p>
+      In the RENTMY page editor, switch to the HTML view and paste this.
+      Replace <code>YOUR_GITHUB_URL_HERE</code> with your actual GitHub page URL.
+    </p>
+
+    <pre><code>&lt;iframe 
+  src="YOUR_GITHUB_URL_HERE" 
+  width="100%" 
+  height="2000px" 
+  title="GitHub Project" 
+  style="border: none; overflow: hidden;"
+  scrolling="no"&gt;
+&lt;/iframe&gt;
+</code></pre>
+
+    <p>
+      The important pieces:
+    </p>
+
+    <ul>
+      <li><code>width="100%"</code> → iframe stretches full width of the content area.</li>
+      <li><code>height="2000px"</code> → enough vertical space so the whole GitHub page fits.</li>
+      <li><code>style="border: none; overflow: hidden;"</code> → no border + no inner scrollbars.</li>
+      <li><code>scrolling="no"</code> → tells the browser not to show scrollbars inside the frame.</li>
+    </ul>
+
+    <div class="card">
+      <div class="card-title">Adjusting the height</div>
+      <p class="mb-none">
+        If your page is taller, bump the height up (<code>2200px</code>, <code>2500px</code>, etc.) until the
+        inner scrollbar disappears and only the main page scrolls.
+      </p>
+    </div>
+
+    <h2>3. What RENTMY Changes It To</h2>
+
+    <p>
+      After you save the page, RENTMY rewrites your HTML and wraps the iframe.
+      It ends up looking like this:
+    </p>
+
+    <pre><code>&lt;figure&gt;
+  &lt;div class="embed-content"&gt;
+    &lt;iframe 
+      src="https://gabrielafiona.github.io/bougiebeachpartyco/contact" 
+      width="100%" 
+      height="1700px" 
+      title="GitHub Project" 
+      style="border: none; overflow: hidden;" 
+      scrolling="no"&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+</code></pre>
+
+    <p>
+      Key things RENTMY does:
+    </p>
+
+    <ul>
+      <li>Wraps the iframe in a <code>&lt;figure&gt;</code> element.</li>
+      <li>Adds a wrapper <code>&lt;div class="embed-content"&gt;</code> around it.</li>
+      <li>Keeps the important attributes: <code>width</code>, <code>height</code>, <code>style</code>, <code>scrolling</code>.</li>
+    </ul>
+
+    <div class="card tip">
+      <div class="card-title">The “it finally works” version 🎉</div>
+      <p class="mb-none">
+        In practice, once the height was set high enough (for example <code>1700px</code>),
+        the embedded contact page:
+      </p>
+      <p class="mt-tight mb-none">
+        • Fills the box nicely<br>
+        • No longer shows its own scrollbar<br>
+        • Only scrolls with the main RENTMY page
+      </p>
+    </div>
+
+    <h2>4. Why This Fixes the Double-Scroll Problem</h2>
+
+    <ol class="steps">
+      <li>
+        Normally, if the content inside the iframe is taller than the iframe itself,
+        the browser adds a scrollbar inside the iframe.
+      </li>
+      <li>
+        At the same time, the main RENTMY page also has its own scrollbar.
+        That’s where the “scrolling in a box inside a page” feeling comes from.
+      </li>
+      <li>
+        By making the iframe’s <code>height</code> large enough and using
+        <code>overflow: hidden;</code> + <code>scrolling="no"</code>, the inner scrollbar
+        disappears.
+      </li>
+      <li>
+        Now the GitHub page is just a big, tall section of the RENTMY page.  
+        You scroll once, like a normal long page. ✨
+      </li>
+    </ol>
+
+    <h2>5. Copy-Paste Templates</h2>
+
+    <h3>A. Generic Template</h3>
+
+    <pre><code>&lt;iframe 
+  src="YOUR_GITHUB_URL_HERE" 
+  width="100%" 
+  height="2000px" 
+  title="GitHub Project" 
+  style="border: none; overflow: hidden;"
+  scrolling="no"&gt;
+&lt;/iframe&gt;
+</code></pre>
+
+    <h3>B. Example Using a Contact Page</h3>
+
+    <pre><code>&lt;iframe 
+  src="https://gabrielafiona.github.io/bougiebeachpartyco/contact" 
+  width="100%" 
+  height="1700px" 
+  title="Bougie Beach Party Co Contact" 
+  style="border: none; overflow: hidden;"
+  scrolling="no"&gt;
+&lt;/iframe&gt;
+</code></pre>
+
+    <div class="card warning">
+      <div class="card-title">Common Gotchas</div>
+      <p class="mb-none">
+        • If you still see a scrollbar <em>inside</em> the iframe → increase the <code>height</code>.<br>
+        • If the frame cuts off the bottom of your GitHub page → same thing, bump the height.<br>
+        • If RENTMY strips attributes, re-check the HTML and re-paste the snippet.
+      </p>
+    </div>
+
+    <h2>6. Mini Checklist 🧾</h2>
+
+    <ul>
+      <li>✅ GitHub page is live (you have a working URL).</li>
+      <li>✅ In RENTMY, open the page → switch to HTML mode.</li>
+      <li>✅ Paste the iframe template and set <code>src</code> to your GitHub URL.</li>
+      <li>✅ Start with <code>height="2000px"</code> and adjust if needed.</li>
+      <li>✅ Save the page, refresh, and test the scroll behavior.</li>
+    </ul>
+
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:#9ca3af; text-align:center;">
+      One cute GitHub page ➜ embedded in RENTMY ➜ smooth, single scroll for your guests. 🌊💻
+    </p>
+  </div>
+</body>
+</html>
