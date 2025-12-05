@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Verify a Custom Domain for Your GitHub Pages User Site</title>
+<style>
+  body {
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#020617;
+    color:#e5e7eb;
+    margin:0;
+    padding:2rem;
+    line-height:1.6;
+  }
+  .page{
+    max-width:900px;
+    margin:0 auto;
+    background:#020617;
+    border-radius:18px;
+    padding:2rem 2.5rem;
+    border:1px solid #1f2937;
+    box-shadow:0 20px 45px rgba(0,0,0,0.55);
+    background-image:
+      radial-gradient(circle at top left,rgba(56,189,248,0.14),transparent 55%),
+      radial-gradient(circle at bottom right,rgba(52,211,153,0.12),transparent 55%);
+  }
+  h1{
+    color:#38bdf8;
+    text-align:center;
+    font-size:2rem;
+  }
+  h2{
+    border-left:4px solid #38bdf8;
+    padding-left:0.6rem;
+    margin-top:1.3rem;
+  }
+  h3{
+    margin-top:1rem;
+  }
+  p.subhead{
+    text-align:center;
+    color:#9ca3af;
+    margin-top:0.3rem;
+  }
+  pre{
+    background:#0b1220;
+    padding:1rem;
+    border-radius:12px;
+    overflow-x:auto;
+    border:1px solid #1f2937;
+    font-size:0.9rem;
+  }
+  code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  .card{
+    border-radius:14px;
+    padding:1rem 1.2rem;
+    border:1px solid #1f2937;
+    background:radial-gradient(circle at top left,rgba(56,189,248,0.12),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(250,204,21,0.10),transparent 55%),
+               #020617;
+    margin:1rem 0;
+  }
+  .steps{
+    counter-reset: step;
+    list-style:none;
+    padding-left:0;
+    margin-left:0;
+  }
+  .steps li{
+    counter-increment: step;
+    margin:0.5rem 0;
+    padding-left:2rem;
+    position:relative;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:0.25rem;
+    width:1.3rem;
+    height:1.3rem;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    background:linear-gradient(135deg,#38bdf8,#4ade80);
+    color:#020617;
+    font-weight:700;
+  }
+  ul{
+    margin-left:1.2rem;
+  }
+  .note{
+    font-size:0.9rem;
+    color:#9ca3af;
+  }
+  .highlight{
+    color:#facc15;
+    font-weight:600;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Verify a Custom Domain<br>for Your GitHub Pages User Site</h1>
+  <p class="subhead">Profile-level domain verification • For user sites like <code>username.github.io</code></p>
+
+  <div class="card">
+    <strong>Important:</strong> Domain verification happens in your <strong>profile settings</strong>, not in a repository’s settings.
+    Make sure you are in your personal Settings, not a repo’s Settings page.
+  </div>
+
+  <h2>1️⃣ Open the Right Settings Area</h2>
+  <ol class="steps">
+    <li>In the upper-right corner of GitHub, click your profile picture.</li>
+    <li>Click <strong>Settings</strong> (this is your <em>profile</em> settings).</li>
+    <li>In the left sidebar, under <strong>“Code, planning, and automation”</strong>, click <strong>Pages</strong>.</li>
+  </ol>
+
+  <h2>2️⃣ Add the Domain You Want to Verify</h2>
+  <ol class="steps">
+    <li>On the right, in the Pages section, click <strong>Add a domain</strong>.</li>
+    <li>In the field labeled <strong>“What domain would you like to add?”</strong>, type the domain you own
+      (for example: <code>example.com</code>).</li>
+    <li>Click <strong>Add domain</strong>.</li>
+  </ol>
+
+  <div class="card">
+    This does not change your live site yet. You’re just telling GitHub which domain you plan to verify.
+  </div>
+
+  <h2>3️⃣ Create the TXT Record with Your Domain Host</h2>
+  <p>GitHub will now show instructions under <strong>“Add a DNS TXT record”</strong>. This tells you exactly what TXT record to create.</p>
+
+  <ul>
+    <li>Log in to your domain provider (Namecheap, Google Domains, Cloudflare, etc.).</li>
+    <li>Open the DNS management / DNS settings for your domain.</li>
+    <li>Create a new <strong>TXT record</strong> with the values GitHub gives you.</li>
+  </ul>
+
+  <p class="note">
+    It will look something like:<br>
+    <code>_github-pages-challenge-USERNAME.example.com TXT "random-verification-string"</code>
+  </p>
+
+  <h2>4️⃣ Wait for DNS to Update (Up to 24 Hours)</h2>
+  <p>DNS changes are not instant. They may apply:</p>
+  <ul>
+    <li>Almost immediately, or</li>
+    <li>Take up to <strong>24 hours</strong>.</li>
+  </ul>
+
+  <h3>Optional: Verify with <code>dig</code> (command line)</h3>
+  <p class="note">
+    On your computer, you can check if the TXT record is visible yet by running:
+  </p>
+
+  <pre><code>dig _github-pages-challenge-USERNAME.example.com +nostats +nocomments +nocmd TXT</code></pre>
+
+  <p class="note">
+    Replace <code>USERNAME</code> with your GitHub username and <code>example.com</code> with your domain.<br>
+    If DNS has updated, you’ll see the TXT record in the output.
+  </p>
+
+  <h2>5️⃣ Finish Verifying the Domain in GitHub</h2>
+  <ol class="steps">
+    <li>If you’re no longer on the domain page, go back to:
+      <ul>
+        <li><strong>Profile Settings → Pages</strong></li>
+      </ul>
+    </li>
+    <li>Under <strong>Verified domains</strong>, find the domain you added.</li>
+    <li>To the right of the domain, click the <strong>⋯</strong> (kebab menu).</li>
+    <li>Click <strong>Continue verifying</strong>.</li>
+    <li>Click <strong>Verify</strong>.</li>
+  </ol>
+
+  <div class="card">
+    If the TXT record has propagated, GitHub will mark the domain as
+    <span class="highlight">Verified</span>.
+  </div>
+
+  <h2>6️⃣ Keep the TXT Record in DNS</h2>
+  <p>
+    To keep your domain verified long-term, you must <strong>keep the TXT record</strong> in your DNS settings.
+    Don’t delete it after verification, or GitHub may mark the domain as unverified later.
+  </p>
+
+  <h2>7️⃣ Quick Checklist</h2>
+  <ul>
+    <li>✔ In <strong>profile</strong> settings (not repo settings).</li>
+    <li>✔ <strong>Pages</strong> section → <strong>Add a domain</strong>.</li>
+    <li>✔ Create TXT record exactly as GitHub shows with your domain host.</li>
+    <li>✔ Wait for DNS to update (can be up to 24 hours).</li>
+    <li>✔ Back in GitHub → Pages → <strong>Continue verifying → Verify</strong>.</li>
+    <li>✔ Leave the TXT record in place to keep the domain verified.</li>
+  </ul>
+
+  <p class="note" style="text-align:center;margin-top:1.5rem;">
+    Add this page to your cheat-sheet hub to remember the exact GitHub → DNS → Verify flow next time. 💙
+  </p>
+
+</div>
+</body>
+</html>
