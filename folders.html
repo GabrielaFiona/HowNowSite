@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Cheat – Assets Folder & Images</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: #e0edff;
+      --text: #1f2933;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.75rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent-soft);
+      padding-bottom: 0.25rem;
+    }
+
+    h3 {
+      margin-top: 1.1rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.25rem 0 0.6rem;
+    }
+
+    ol,
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.35rem 0 0.75rem;
+    }
+
+    li + li {
+      margin-top: 0.25rem;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
+
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .steps {
+      counter-reset: step;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .step {
+      counter-increment: step;
+      margin: 0.8rem 0;
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-title::before {
+      content: "Step " counter(step) " – ";
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    nav {
+      margin: 1rem 0 1.5rem;
+      padding: 0.75rem 1rem;
+      background: #f9fafb;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+    }
+
+    nav strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .tiny {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 1.5rem;
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 0.8rem 1rem;
+      }
+
+      main {
+        padding: 0 0.75rem;
+      }
+
+      .card {
+        padding: 1.1rem 1rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GitHub Cheat – Assets Folder & Images</h1>
+    <p>How to create an <code>assets</code> folder and use your images.</p>
+  </header>
+
+  <main>
+    <article class="card">
+      <nav>
+        <strong>On this page</strong>
+        <ol>
+          <li><a href="#what-is-assets">What is an <code>assets</code> folder?</a></li>
+          <li><a href="#option-1-browser">Option 1: Create the folder on GitHub.com</a></li>
+          <li><a href="#option-2-new-file">Option 2: “Create new file” folder trick</a></li>
+          <li><a href="#option-3-local">Option 3: Make the folder on your computer</a></li>
+          <li><a href="#using-images">Using your images in HTML &amp; CSS</a></li>
+        </ol>
+      </nav>
+
+      <section id="what-is-assets">
+        <h2>1. What is an <code>assets</code> folder?</h2>
+        <p>
+          GitHub doesn’t really have “folders” as a separate thing. A folder exists
+          only when there are files inside it. An <code>assets</code> folder is just
+          a regular folder in your repository where you store images, icons, or
+          other media.
+        </p>
+        <div class="callout">
+          <strong>Remember:</strong> You don’t see a “New folder” button in GitHub.
+          Instead, you create a folder by saving a file with
+          <code>folder-name/your-file-name</code> in its path.
+        </div>
+      </section>
+
+      <section id="option-1-browser">
+        <h2>2. Option 1 – Create an <code>assets</code> folder on GitHub.com</h2>
+        <p><em>This is easiest if you’re working directly in the browser.</em></p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-title">Open your repository</div>
+            <p>Go to the GitHub repo where you want to add your images.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Start an upload</div>
+            <ol>
+              <li>At the top of the file list, click <strong>Add file &rarr; Upload files</strong>.</li>
+              <li>You’ll see an area that says something like “Drag files here to upload”.</li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Tell GitHub you want a folder</div>
+            <ol>
+              <li>Drag your image(s) from your computer into the upload area.</li>
+              <li>
+                Above the upload area you’ll see the file path (it looks like
+                <code>your-repo-name/</code>).
+              </li>
+              <li>
+                Click at the end of that path and type:
+                <code>assets/</code> so it becomes something like:
+                <code>your-repo-name/assets/your-image.png</code>
+              </li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Save your changes</div>
+            <ol>
+              <li>Scroll down to the “Commit changes” area.</li>
+              <li>Optionally type a short message like <code>Add assets folder</code>.</li>
+              <li>Click <strong>Commit changes</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <p>
+          ✅ Your repo now has an <code>assets</code> folder with your image files
+          inside.
+        </p>
+      </section>
+
+      <section id="option-2-new-file">
+        <h2>3. Option 2 – Use the “Create new file” folder trick</h2>
+        <p>
+          This trick is nice if you want to create the folder first and upload
+          images later.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-title">Create a new file</div>
+            <ol>
+              <li>In your repo, click <strong>Add file &rarr; Create new file</strong>.</li>
+              <li>
+                In the file name box, type something like
+                <code>assets/example.txt</code>.
+              </li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Add placeholder content</div>
+            <p>
+              In the big text box, you can type anything (even just
+              <code>placeholder</code>). This file only exists to create the folder.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Commit the file</div>
+            <ol>
+              <li>Scroll down to the commit section.</li>
+              <li>Click <strong>Commit new file</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <p>
+          Now you’ll see an <code>assets</code> folder in your repository. You can
+          click into it and use <strong>Upload files</strong> to add your images
+          directly into that folder. You can delete the <code>example.txt</code>
+          later if you don’t need it.
+        </p>
+      </section>
+
+      <section id="option-3-local">
+        <h2>4. Option 3 – Create <code>assets</code> locally and push</h2>
+        <p>
+          Use this approach if you’re working on your project on your own computer
+          (VS Code, etc.) and pushing to GitHub with Git.
+        </p>
+
+        <ol>
+          <li>
+            On your computer, inside your project folder, create a new folder called:
+            <code>assets</code>.
+          </li>
+          <li>Put your image files inside that folder (for example: <code>logo.png</code>, <code>background.jpg</code>).</li>
+          <li>Open a terminal in your project folder and run:</li>
+        </ol>
+
+        <pre><code>git add assets/*
+git commit -m "Add assets folder with images"
+git push</code></pre>
+
+        <p>
+          When you refresh your repo on GitHub, the <code>assets</code> folder and
+          your images will be there.
+        </p>
+      </section>
+
+      <section id="using-images">
+        <h2>5. Using your images in HTML &amp; CSS</h2>
+        <p>
+          Once your images live in <code>assets/</code>, the path to an image
+          looks like:
+        </p>
+
+        <pre><code>assets/your-image-name.png</code></pre>
+
+        <h3>Example: Using an image in HTML</h3>
+        <pre><code>&lt;img src="assets/logo.png" alt="Site logo"&gt;</code></pre>
+
+        <h3>Example: Using an image in CSS</h3>
+        <pre><code>.hero {
+  background-image: url("assets/background.jpg");
+}</code></pre>
+
+        <div class="callout">
+          <strong>Tip:</strong> If an image isn’t showing up, double-check:
+          <ul>
+            <li>The file name spelling (including <code>.png</code>, <code>.jpg</code>, etc.).</li>
+            <li>That the file actually lives in the <code>assets</code> folder in your repo.</li>
+            <li>That the path in your code matches the folder structure exactly.</li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="tiny">How Now Cheat Sheet &middot; GitHub Assets Folder Helper</p>
+    </article>
+  </main>
+</body>
+</html>
